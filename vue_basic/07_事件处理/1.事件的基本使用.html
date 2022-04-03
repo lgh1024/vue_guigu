@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+</head>
+<body>
+  <div id="root">
+    <h2>欢迎来到{{ name }}</h2>
+    <!-- <button v-on:click="showInfo1">点我</button> -->
+    <button @click="showInfo1">点我（不传参）</button>
+    <button @click="showInfo2($event, 666)">点我（传参）</button>
+  </div>
+
+  <script>
+    const vm = new Vue({
+      el: '#root',
+      data: {
+        name: '尚硅谷'
+      },
+      methods: {
+        showInfo1(event) {
+          console.log(event);
+          console.log(event.target);
+          console.log(event.target.innerText);
+        },
+        showInfo2(event, number) {
+          console.log(event, number);
+          // console.log(event.target);
+          // console.log(event.target.innerText);
+          console.log(this);
+          console.log(this === vm);
+        }
+      },
+    })
+  </script>
+</body>
+</html>
