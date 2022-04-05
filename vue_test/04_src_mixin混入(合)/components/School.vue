@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h2 @click="showName">学生姓名：{{name}}</h2>
-		<h2>学生性别：{{sex}}</h2>
+    <h2 @click="showName">学校名称：{{ name }}</h2>
+    <h2>学校地址：{{ address }}</h2>
   </div>
 </template>
 
@@ -12,13 +12,14 @@ import {hunhe, hunhe2} from '../mixin.js'
 
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
-  name:'Student',
-		data() {
-			return {
-				name:'张三',
-				sex:'男'
-			}
-		},
+  name: 'School',
+  data() {
+    return {
+      name: '尚硅谷',
+      address: '北京',
+      x: 666
+    }
+  },
   mixins: [hunhe, hunhe2]
 }
 </script>
