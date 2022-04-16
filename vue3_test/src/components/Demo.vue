@@ -9,7 +9,7 @@
 </template>
 
 <script>
-	import {ref, reactive, toRef, toRefs} from 'vue'
+	import {reactive, toRefs} from 'vue'
   export default {
     // eslint-disable-next-line vue/multi-word-component-names
     name: 'Demo',
