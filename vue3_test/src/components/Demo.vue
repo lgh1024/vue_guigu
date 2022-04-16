@@ -1,22 +1,47 @@
 <template>
-  <h2>当前求和为：{{ sum }}</h2>
-  <button @click="sum++">点我+1</button>
-	<hr>
-	<h2>当前点击鼠标的坐标为：x：{{ point.x }}，y：{{ point.y }}</h2>
+  <h4>{{person}}</h4>
+	<h2>姓名：{{name}}</h2>
+	<h2>年龄：{{age}}</h2>
+	<h2>薪资：{{job.j1.salary}}K</h2>
+	<button @click="name+='~'">修改姓名</button>
+	<button @click="age++">增长年龄</button>
+	<button @click="job.j1.salary++">涨薪</button>
 </template>
 
 <script>
-	import {ref} from 'vue'
-	import usePoint from '../hooks/usePoint'
+	import {ref, reactive, toRef, toRefs} from 'vue'
   export default {
     // eslint-disable-next-line vue/multi-word-component-names
     name: 'Demo',
     setup() {
       // 数据
-      let sum = ref(0)
-			let point = usePoint()
+      let person = reactive({
+				name:'张三',
+				age:18,
+				job:{
+					j1:{
+						salary:20
+					}
+				}
+			})
 
-      return {sum, point}
+      // const name1 = person.name
+			// console.log('%%%',name1)
+
+			// const name2 = toRef(person,'name')
+			// console.log('####',name2)
+
+			const x = toRefs(person)
+			console.log('******',x)
+
+			//返回一个对象（常用）
+			return {
+				person,
+				// name:toRef(person,'name'),
+				// age:toRef(person,'age'),
+				// salary:toRef(person.job.j1,'salary'),
+				...toRefs(person)
+			}
       }
   }
 </script>
